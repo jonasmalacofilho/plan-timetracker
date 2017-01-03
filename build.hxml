@@ -1,0 +1,7 @@
+-neko bin/ptt.n
+-main Main
+-cp src
+-lib assertion
+-lib literals
+-cmd nekotools boot bin/ptt.n
+
