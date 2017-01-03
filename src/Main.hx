@@ -27,7 +27,7 @@ class Main {
 
 	static function getEntries(content)
 	{
-		var rough = ~/log[ ]+[^`\n]+[ ]+#[a-zA-Z0-9-]+/g;  // pattern used to warn about things that _might_ be malformed log annotations
+		var rough = ~/l(og|go)[ ]+[^`\n]+[ ]+#[a-zA-Z0-9-]+/g;  // pattern used to warn about things that _might_ be malformed log annotations
 		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)'?[ ]+to[ ]+(\d+)[h:](\d+)'?)|(((\d+)[h:])?(\d+)'?)|((\d+)('|[ ]*min)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9-]+)[^`]*`/g;
 		var pos = 0, entries = [];
 		while (rough.matchSub(content, pos)) {
