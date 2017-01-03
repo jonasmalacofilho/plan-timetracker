@@ -3,7 +3,7 @@ plan-timetracker – ptt
 
 An utility to summarize time tracking annotations in my (J. Carmack inspired) plan files.
 
-The basic usage is: ptt <file> [<file>..]
+The basic usage is: ptt <file> [<file> ...]
 
 This works particularly well when combined with shell globbing and basic unix tools:
 

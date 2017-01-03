@@ -1,7 +1,7 @@
 import Assertion.*;
+import Std.parseInt;
 import sys.FileSystem;
 using Literals;
-import Std.parseInt;
 
 typedef Duration = Float; // in seconds
 
@@ -100,7 +100,7 @@ class Main {
 				plan timetracker – ptt
 
 				Usage:
-				  ptt <file> [<file> ..]
+				  ptt <file> [<file> ...]
 			".doctrim());
 			Sys.exit(1);
 		}
