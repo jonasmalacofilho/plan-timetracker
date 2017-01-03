@@ -27,27 +27,37 @@ class Main {
 
 	static function getEntries(content)
 	{
-		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)'?[ ]+to[ ]+(\d+)[h:](\d+)'?)|(((\d+)[h:])?(\d+)'?))[ ]+on[ ]+(#[a-zA-Z0-9-]+)[^`]*`/g;
+		var rough = ~/log[ ]+[^`\n]+[ ]+#[a-zA-Z0-9-]+/g;  // pattern used to warn about things that _might_ be malformed log annotations
+		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)'?[ ]+to[ ]+(\d+)[h:](\d+)'?)|(((\d+)[h:])?(\d+)'?)|((\d+)('|[ ]*min)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9-]+)[^`]*`/g;
 		var pos = 0, entries = [];
-		while (pat.matchSub(content, pos)) {
-			// show([for (i in 0...11) pat.matched(i+1)]);
+		while (rough.matchSub(content, pos)) {
+			var mpos = rough.matchedPos();
+			pos = mpos.pos + mpos.len;
+
+			if (!pat.matchSub(content, mpos.pos - 2) || pat.matchedPos().pos != mpos.pos - 2) {
+				// show(pat.matchedPos(), mpos, pos);
+				warn('Possibly malformed annotation ignored: ${rough.matched(0)}');
+				continue;
+			}
+
+			// show([for (i in 0...15) pat.matched(i+1)]);
 			var entry:Entry = {
-				channel : pat.matched(11),
+				channel : pat.matched(15),
 				duration : 0
 			}
 			var precise = pat.matched(2) != null;
-			if (pat.matched(2) != null) {
+			if (precise) {
 				entry.start = 60.*parseInt(pat.matched(4)) + 3600.*parseInt(pat.matched(3));
 				entry.finish = 60.*parseInt(pat.matched(6)) + 3600.*parseInt(pat.matched(5));
 				assert(entry.start <= entry.finish);
 				entry.duration = entry.finish - entry.start;
-			} else {
+			} else if (pat.matched(7) != null) {
 				entry.duration = 60.*parseInt(pat.matched(10)) + (pat.matched(8) != null ? 3600.*parseInt(pat.matched(9)) : 0);
+			} else {
+				entry.duration = 60.*parseInt(pat.matched(12));
 			}
 			// show(pat.matched(0), entry);
 			entries.push(entry);
-			var mpos = pat.matchedPos();
-			pos = mpos.pos + mpos.len;
 		}
 		return entries;
 	}
@@ -55,7 +65,7 @@ class Main {
 	static function prettyDuration(dur:Duration)
 	{
 		var hours = Math.floor(dur/3600);
-		var minutes = (dur - hours*3600)/60;
+		var minutes = StringTools.lpad(Std.string((dur - hours*3600)/60), "0", 2);
 		return '${hours}h${minutes}\'';
 	}
 
