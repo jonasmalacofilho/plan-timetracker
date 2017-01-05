@@ -1,0 +1,40 @@
+% basic usage
+`/log from 16:20 to 16h50 on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log 0h05' on #team`
+---
+{"channel":"#team","duration":300}
+===
+`/log 15 min on #brt`
+---
+{"channel":"#brt","duration":900}
+===
+`/log 12' on #admin`
+---
+{"channel":"#admin","duration":720}
+===
+
+% corner cases
+`/log 0h05' on #mqt_io`
+---
+{"channel":"#mqt_io","duration":300}
+===
+`/log from 09h00' to 12h30 to #marketing: meeting`
+---
+{"channel":"#marketing","start":32400,"finish":45000,"duration":12600}
+===
+`/log 2h45 on #stuff
+
+**more things to do**:
+
+ - more stuff `
+---
+{"channel":"#stuff","duration":9900}
+===
+`/log 12 ' on #admin`
+---
+{"channel":"#admin","duration":720}
+===
+

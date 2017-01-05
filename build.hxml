@@ -3,5 +3,6 @@
 -cp src
 -lib assertion
 -lib literals
+-lib utest
 -cmd nekotools boot bin/ptt.n
 
