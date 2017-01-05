@@ -24,7 +24,7 @@ class Analyzer {
 	static function getEntries(content)
 	{
 		var rough = ~/l(og|go)[ ]+[^`\n]+[ ]+#[a-zA-Z0-9-]+/g;  // pattern used to warn about things that _might_ be malformed log annotations
-		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)'?[ ]+to[ ]+(\d+)[h:](\d+)'?)|(((\d+)[h:])?(\d+)'?)|((\d+)('|[ ]*min)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9-]+)[^`]*`/g;
+		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)[ ]*'?[ ]+to[ ]+(\d+)[h:](\d+)[ ]*'?)|(((\d+)[h:])?(\d+)[ ]*'?)|((\d+)[ ]*('|[ ]*min)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9_-]+)[^`]*`/g;
 		var pos = 0, entries = [];
 		while (rough.matchSub(content, pos)) {
 			var mpos = rough.matchedPos();
