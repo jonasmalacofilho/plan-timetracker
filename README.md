@@ -7,13 +7,11 @@ It was originally created to summarize the annotations in my (J. Carmack inspire
 ## Example
 
 ```
-$ ptt 2017/01/0[2-3].md
-```
-
-```
+$ ptt 2017/01
 ptt – plan timetracker
 
 
+=> Entering directory 2017/01
 => 2017/01/02.md
  -> #online-brt-guide: 3h06'
  -> #admin: 1h40'
