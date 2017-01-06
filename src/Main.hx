@@ -1,11 +1,13 @@
+import ANSI;
+
 import Assertion.*;
 using Literals;
 using StringTools;
 
 class Main {
+	static var banner = "
+		ptt – plan timetracker".doctrim();
 	static var usage = "
-		plan timetracker – ptt
-
 		Usage:
 		  ptt <file> [<file> ...]
 		  ptt generate-test-file <test file> <file> [<file> ...]
@@ -14,6 +16,7 @@ class Main {
 
 	static function main()
 	{
+		Sys.println('${ANSI.set(Blue,Bold)}$banner${ANSI.set(Off)}\n\n');
 		switch Sys.args() {
 		case ["--help"|"-h"]:
 			Sys.print(usage);

@@ -1,3 +1,4 @@
+import ANSI;
 import sys.FileSystem;
 
 import Assertion.*;
@@ -74,14 +75,14 @@ class Analyzer {
 	static function printSummary(summary:Map<String,Duration>, println)
 	{
 		var channels = [for (k in summary.keys()) k];
-		channels.sort(Reflect.compare);
+		channels.sort(function (a,b) return Reflect.compare(summary[b], summary[a]));
 		var acc = 0.;
 		for (c in channels) {
 			var dur = summary[c];
 			acc += dur;
-			println('  $c: ${prettyDuration(dur)}');
+			println(' -> $c: ${ANSI.set(Bold)}${prettyDuration(dur)}${ANSI.set(Off)}');
 		}
-		println(' -> total: ${prettyDuration(acc)}');
+		println('    ${ANSI.set(Bold)}${prettyDuration(acc)} in total${ANSI.set(Off)}');
 	}
 
 	static function absorbSummary(summary:Map<String,Duration>, by:Map<String,Duration>)
@@ -110,7 +111,7 @@ class Analyzer {
 				dir.sort(Reflect.compare);
 				files = dir.concat(files);
 			case [true, false]:
-				info('=> $file');
+				info('${ANSI.set(Blue,Bold)}=> $file${ANSI.set(Off)}');
 				var entries = getEntries(sys.io.File.getContent(file));
 				var daily = new Map();
 				for (e in entries) {
@@ -123,7 +124,7 @@ class Analyzer {
 				absorbSummary(daily, total);
 			}
 		}
-		Sys.println("=> Summary:");
+		Sys.println('${ANSI.set(Green,Bold)}=> Summary:${ANSI.set(Off)}');
 		printSummary(total, Sys.println);
 	}
 }
