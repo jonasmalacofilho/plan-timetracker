@@ -1,29 +1,79 @@
-% basic usage
-`/log from 16:20 to 16h50 on #staff-meetings`
+% basic usage 1: from <time> to <time>
+`/log from 16h20 to 16h50 on #staff-meetings`
 ---
 {"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16h20' to 16h50' on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16:20 to 16:50 on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16:20' to 16:50' on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16.20 to 16.50 on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16.20' to 16.50' on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16.20' to 16:50 on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+`/log from 16h20 to 16.50' on #staff-meetings`
+---
+{"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
+===
+
+% basic usage 2: <duration>
+`/log 0h05 on #team`
+---
+{"channel":"#team","duration":300}
 ===
 `/log 0h05' on #team`
 ---
 {"channel":"#team","duration":300}
 ===
+`/log 12 ' on #admin`
+---
+{"channel":"#admin","duration":720}
+===
 `/log 15 min on #brt`
 ---
 {"channel":"#brt","duration":900}
 ===
-`/log 12' on #admin`
+`/log 1 minute on #brt`
 ---
-{"channel":"#admin","duration":720}
+{"channel":"#brt","duration":60}
+===
+`/log 15 minutes on #brt`
+---
+{"channel":"#brt","duration":900}
+===
+`/log 1h on #foo`
+---
+{"channel":"#foo","duration":3600}
+===
+`/log 1 hour on #foo`
+---
+{"channel":"#foo","duration":3600}
+===
+`/log 3 hours on #foo`
+---
+{"channel":"#foo","duration":10800}
 ===
 
-% corner cases
+% issues, corner cases, compatibility, etc.
 `/log 0h05' on #mqt_io`
 ---
 {"channel":"#mqt_io","duration":300}
-===
-`/log from 09h00' to 12h30 to #marketing: meeting`
----
-{"channel":"#marketing","start":32400,"finish":45000,"duration":12600}
 ===
 `/log 2h45 on #stuff
 
@@ -33,8 +83,11 @@
 ---
 {"channel":"#stuff","duration":9900}
 ===
-`/log 12 ' on #admin`
+`\log 12' on #admin`
 ---
 {"channel":"#admin","duration":720}
 ===
-
+`/log 15 min to #brt`
+---
+{"channel":"#brt","duration":900}
+===

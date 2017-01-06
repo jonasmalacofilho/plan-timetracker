@@ -25,7 +25,7 @@ class Analyzer {
 	static function getEntries(content)
 	{
 		var rough = ~/l(og|go)[ ]+[^`\n]+[ ]+#[a-zA-Z0-9-]+/g;  // pattern used to warn about things that _might_ be malformed log annotations
-		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:](\d+)[ ]*'?[ ]+to[ ]+(\d+)[h:](\d+)[ ]*'?)|(((\d+)[h:])?(\d+)[ ]*'?)|((\d+)[ ]*('|[ ]*min)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9_-]+)[^`]*`/g;
+		var pat = ~/`[\/\\]log[ ]+((from[ ]+(\d+)[h:.](\d+)'?[ ]+to[ ]+(\d+)[h:.](\d+)'?)|(((\d+)[h:.])?(\d+)[ ]*'?)|((\d+)[ ]*('|min|minute|minutes))|((\d+)[ ]*(h|hour|hours)))[ ]+(on|to)[ ]+(#[a-zA-Z0-9_-]+)[^`]*`/g;
 		var pos = 0, entries = [];
 		while (rough.matchSub(content, pos)) {
 			var mpos = rough.matchedPos();
@@ -37,9 +37,9 @@ class Analyzer {
 				continue;
 			}
 
-			// show([for (i in 0...15) pat.matched(i+1)]);
+			// show([for (i in 0...18) pat.matched(i+1)]);
 			var entry:Entry = {
-				channel : pat.matched(15),
+				channel : pat.matched(18),
 				duration : 0
 			}
 			var precise = pat.matched(2) != null;
@@ -50,8 +50,10 @@ class Analyzer {
 				entry.duration = entry.finish - entry.start;
 			} else if (pat.matched(7) != null) {
 				entry.duration = 60.*parseInt(pat.matched(10)) + (pat.matched(8) != null ? 3600.*parseInt(pat.matched(9)) : 0);
-			} else {
+			} else if (pat.matched(11) != null) {
 				entry.duration = 60.*parseInt(pat.matched(12));
+			} else {
+				entry.duration = 3600.*parseInt(pat.matched(15));
 			}
 			// show(pat.matched(0), entry);
 			entries.push(entry);
