@@ -86,7 +86,7 @@ Currently this is not packaged. You need to build it from the sources, but that'
 
 ## Building
 
-This is written in Haxe, and runs on the Neko VM.
+This is written in Haxe, and runs on the Neko VM on Windows, Mac and Linux.
 
 To install the dependencies:
 
