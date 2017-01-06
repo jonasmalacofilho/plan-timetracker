@@ -82,6 +82,10 @@ This works particularly well when combined with shell globbing and basic unix to
  - pipe to grep to check for warnings: `ptt ~/plan/2017/**/*.{md,txt} 2>&1 | grep`
  - or to less to analyze the warnings: `ptt ~/plan/2017/**/*.{md,txt} 2>&1 | less`
 
+## Installing
+
+Currently this is not packaged. You need to build it from the sources, but that's easy: check the next section.
+
 ## Building
 
 This is written in Haxe, and runs on the Neko VM.
