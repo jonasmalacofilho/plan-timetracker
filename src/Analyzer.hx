@@ -45,7 +45,7 @@ class Analyzer {
 			if (precise) {
 				entry.start = 60.*parseInt(pat.matched(4)) + 3600.*parseInt(pat.matched(3));
 				entry.finish = 60.*parseInt(pat.matched(6)) + 3600.*parseInt(pat.matched(5));
-				assert(entry.start <= entry.finish);
+				assert(entry.start <= entry.finish, pat.matched(0));
 				entry.duration = entry.finish - entry.start;
 			} else if (pat.matched(7) != null) {
 				entry.duration = 60.*parseInt(pat.matched(10)) + (pat.matched(8) != null ? 3600.*parseInt(pat.matched(9)) : 0);
