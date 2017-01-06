@@ -4,7 +4,7 @@
 
 It was originally created to summarize the annotations in my (J. Carmack inspired) plan files, but it's general enough to be used with other input sources.
 
-## Example
+A quick example:
 
 ```
 $ ptt 2017/01
