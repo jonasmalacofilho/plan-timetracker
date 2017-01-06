@@ -4,37 +4,7 @@
 
 It was originally created to summarize the annotations in my (J. Carmack inspired) plan files, but it's general enough to be used with other input sources.
 
-A quick example:
-
-```
-$ ptt 2017/01
-ptt – plan timetracker
-
-
-=> Entering directory 2017/01
-=> 2017/01/02.md
- -> #online-brt-guide: 3h06'
- -> #admin: 1h40'
- -> #staff-meetings: 1h00'
- -> #team: 0h33'
- -> #imply: 0h02'
-    6h21' in total
-=> 2017/01/03.md
- -> #online-brt-guide: 3h49'
- -> #team: 2h06'
- -> #marketing: 0h40'
- -> #admin: 0h12'
- -> #staff-meetings: 0h05'
-    6h52' in total
-=> Summary:
- -> #online-brt-guide: 6h55'
- -> #team: 2h39'
- -> #admin: 1h52'
- -> #staff-meetings: 1h05'
- -> #marketing: 0h40'
- -> #imply: 0h02'
-    13h13' in total
-```
+![ptt in action](docs/ptt-example.png)
 
 ## Supported annotation format
 
