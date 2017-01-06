@@ -1,4 +1,4 @@
-% basic usage 1: from <time> to <time>
+% basic type of annotation 1: from <time> to <time>
 `/log from 16h20 to 16h50 on #staff-meetings`
 ---
 {"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
@@ -32,7 +32,7 @@
 {"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
 ===
 
-% basic usage 2: <duration>
+% basic type of annotation 2: <duration>
 `/log 0h05 on #team`
 ---
 {"channel":"#team","duration":300}
@@ -40,6 +40,10 @@
 `/log 0h05' on #team`
 ---
 {"channel":"#team","duration":300}
+===
+`/log 12' on #admin`
+---
+{"channel":"#admin","duration":720}
 ===
 `/log 12 ' on #admin`
 ---
@@ -88,6 +92,10 @@
 {"channel":"#admin","duration":720}
 ===
 `/log 15 min to #brt`
+---
+{"channel":"#brt","duration":900}
+===
+`/log 15 min on #brt: meeting`
 ---
 {"channel":"#brt","duration":900}
 ===
