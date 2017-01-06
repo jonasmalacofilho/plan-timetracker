@@ -108,7 +108,7 @@ class Analyzer {
 			case [false, _]:
 				warn('File does not exist: $file');
 			case [true, true]:
-				info('=> Entering directory $file');
+				info('${ANSI.set(Blue)}=> Entering directory $file${ANSI.set(Off)}');
 				var dir = FileSystem.readDirectory(file).map(function (p) return haxe.io.Path.join([file, p]));
 				dir.sort(Reflect.compare);
 				files = dir.concat(files);
