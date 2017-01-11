@@ -4,5 +4,6 @@
 -lib assertion
 -lib literals
 -lib utest
+-lib ansi
 -cmd nekotools boot bin/ptt.n
 
