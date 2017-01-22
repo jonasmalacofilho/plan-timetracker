@@ -78,11 +78,11 @@ class Analyzer {
 	{
 		var channels = [for (k in summary.keys()) k];
 		channels.sort(function (a,b) return Reflect.compare(summary[b], summary[a]));
-		var acc = 0.;
+		var acc = Lambda.fold(summary, function (i,s) return s += i, 0.);
 		for (c in channels) {
 			var dur = summary[c];
-			acc += dur;
-			println(' -> $c: ${ANSI.set(Bold)}${prettyDuration(dur)}${ANSI.set(Off)}');
+			var rel = Math.round(dur/acc*100);
+			println(' -> $c: ${ANSI.set(Bold)}${prettyDuration(dur)}${ANSI.set(Off)}/$rel%');
 		}
 		println('    ${ANSI.set(Bold)}${prettyDuration(acc)} in total${ANSI.set(Off)}');
 	}
