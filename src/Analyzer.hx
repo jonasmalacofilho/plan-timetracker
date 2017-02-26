@@ -104,7 +104,9 @@ class Analyzer {
 		var total = new Map();
 		while (files.length > 0) {
 			var file = files.shift();
-			switch [FileSystem.exists(file), FileSystem.isDirectory(file)] {
+			var exists = FileSystem.exists(file);
+			var isDir = exists ? FileSystem.isDirectory(file) : false;
+			switch [exists, isDir] {
 			case [false, _]:
 				warn('File does not exist: $file');
 			case [true, true]:
