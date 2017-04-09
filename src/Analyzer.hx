@@ -74,6 +74,10 @@ class Analyzer {
 		return '${hours}h${minutes}\'';
 	}
 
+	static inline function repeat(s:String, n:Int)
+		return [for (i in 0...n) s].join("");
+
+
 	static function printSummary(summary:Map<String,Duration>, println)
 	{
 		var channels = [for (k in summary.keys()) k];
@@ -96,7 +100,7 @@ class Analyzer {
 					'${ANSI.setX(9999999)}${ANSI.moveLeft(accCol.length - 1)}$accCol';
 			println(line);
 		}
-		println('    ${ANSI.set(Bold)}${prettyDuration(acc)} in total${ANSI.set(Off)}');
+		println(repeat(" ", " -> ".length) + '${ANSI.set(Bold)}${prettyDuration(tot)} in total${ANSI.set(Off)}');
 	}
 
 	static function absorbSummary(summary:Map<String,Duration>, by:Map<String,Duration>)
