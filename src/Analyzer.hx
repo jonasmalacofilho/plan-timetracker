@@ -78,11 +78,23 @@ class Analyzer {
 	{
 		var channels = [for (k in summary.keys()) k];
 		channels.sort(function (a,b) return Reflect.compare(summary[b], summary[a]));
-		var acc = Lambda.fold(summary, function (i,s) return s += i, 0.);
+		var tot = Lambda.fold(summary, function (i,s) return s += i, 0.);
+		var acc = 0.;
 		for (c in channels) {
 			var dur = summary[c];
-			var rel = Math.round(dur/acc*100);
-			println(' -> $c: ${ANSI.set(Bold)}${prettyDuration(dur)}${ANSI.set(Off)}/$rel%');
+			acc += dur;
+			var rel = '${Math.round(dur/tot*100)}';
+			var relAcc = '${Math.round(acc/tot*100)}'.lpad(" ", 3);
+			var accCol = '[$relAcc%]';
+			// we want to place `accCol` at the right edge of the terminal;
+			// since we don't know the actual terminal size, we use the same
+			// ~principle~ hack that, reportedly, 'resize' uses:
+			// instruct the terminal to move the cursor to somewhere far far away...
+			// then we know that the cursor is at the rightmost position
+			// see also: http://stackoverflow.com/a/35688423/2801377
+			var line = ' -> $c: ${ANSI.set(Bold)}${prettyDuration(dur)}${ANSI.set(Off)}/$rel%' +
+					'${ANSI.setX(9999999)}${ANSI.moveLeft(accCol.length - 1)}$accCol';
+			println(line);
 		}
 		println('    ${ANSI.set(Bold)}${prettyDuration(acc)} in total${ANSI.set(Off)}');
 	}
