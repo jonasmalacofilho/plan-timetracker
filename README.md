@@ -1,4 +1,4 @@
-# ppt – plan time-tracker
+# ptt – plan time-tracker
 
 **ptt** is an utility for time tracking analysis based on simple text file annotations.
 
