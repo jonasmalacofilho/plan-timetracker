@@ -58,18 +58,23 @@ Currently this is not packaged. You need to build it from the sources, but that'
 
 This is written in Haxe, and runs on the Neko VM on Windows, Mac and Linux.
 
-To install the dependencies:
+To install the build dependencies:
 
-```
-haxelib git https://github.com/protocubo/assertion.hx
-haxelib git https://github.com/protocubo/literals.hx
-haxelib install utest
+```bash
+haxelib install hmm
 ```
 
 To build:
 
-```
+```bash
+hmm install
 haxe build.hxml
+```
+
+To install (Linux):
+
+```bash
+sudo cp bin/ptt /usr/local/bin/
 ```
 
 ## Running or generating tests

@@ -1,0 +1,28 @@
+{
+  "dependencies": [
+    {
+      "name": "ansi",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "assertion",
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/protocubo/assertion.hx"
+    },
+    {
+      "name": "literals",
+      "type": "git",
+      "dir": null,
+      "ref": "master",
+      "url": "https://github.com/protocubo/literals.hx"
+    },
+    {
+      "name": "utest",
+      "type": "haxelib",
+      "version": null
+    }
+  ]
+}
