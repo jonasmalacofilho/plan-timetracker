@@ -13,6 +13,9 @@ Annotations should look something like:
 ```
 `/log from <time> to <time> on #<tag>[optional ignored information]`
 `/log <duration> on #<tag>[optional ignored information`
+
+`/log from <time> to <time> on @<name>[optional ignored information]`
+`/log <duration> on @<name>[optional ignored information`
 ```
 
 Splitting into it's components:
@@ -26,7 +29,9 @@ Splitting into it's components:
     + time: _(same as before)_
  - _or_ duration: `0h05`, `5'`, `5 min`, `5 minutes`, `2h` or `2 hours`
  - `on` keyword (`to` also works)
- - tag prefixed by a hash (`#`): a tag can only contain ASCII letters, numbers, underscores and hyphens
+ - tag:
+    + prefixed by either a hash `#` (project tag) or a at-sign `@` (personal tag)
+		+ followed by ASCII letters, numbers, underscores or hyphens
  - (optional information that will be ignored)
  - another backtick
 

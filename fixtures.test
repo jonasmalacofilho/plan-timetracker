@@ -31,6 +31,10 @@
 ---
 {"channel":"#staff-meetings","start":58800,"finish":60600,"duration":1800}
 ===
+`/log from 16h20 to 16h50 on @denis`
+---
+{"channel":"@denis","start":58800,"finish":60600,"duration":1800}
+===
 
 % basic type of annotation 2: <duration>
 `/log 0h05 on #team`
@@ -72,6 +76,10 @@
 `/log 3 hours on #foo`
 ---
 {"channel":"#foo","duration":10800}
+===
+`/log 0h05 on @denis`
+---
+{"channel":"@denis","duration":300}
 ===
 
 % issues, corner cases, compatibility, etc.
