@@ -11,8 +11,8 @@ It was originally created to summarize the annotations in my (J. Carmack inspire
 Annotations should look something like:
 
 ```
-`/log from <time> to <time> on #<tag>[optional ignored information]`
-`/log <duration> on #<tag>[optional ignored information`
+`/log from <time> to <time> on #<name>[optional ignored information]`
+`/log <duration> on #<name>[optional ignored information`
 
 `/log from <time> to <time> on @<name>[optional ignored information]`
 `/log <duration> on @<name>[optional ignored information`
@@ -31,7 +31,7 @@ Splitting into it's components:
  - `on` keyword (`to` also works)
  - tag:
     + prefixed by either a hash `#` (project tag) or a at-sign `@` (personal tag)
-		+ followed by ASCII letters, numbers, underscores or hyphens
+    + followed by ASCII letters, numbers, underscores or hyphens
  - (optional information that will be ignored)
  - another backtick
 
