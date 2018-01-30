@@ -1,8 +1,8 @@
 ptt – plan time-tracker, original work.  
-Copyright (c) 2017, Jonas Malaco.  All rights reserved.
+Copyright (c) 2017–2018, Jonas Malaco.  All rights reserved.
 
 ptt – plan time-tracker, individual contributions.  
-Copyright (c) 2017, contribution author.  All rights reserved.
+Copyright (c) 2017–2018, contribution author.  All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
